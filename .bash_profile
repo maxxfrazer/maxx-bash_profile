@@ -1,5 +1,13 @@
 # env config and most other content from http://natelandau.com/my-mac-osx-bash_profile/
 
+
+
+#   -----------------------------------------
+#   0.  GLOBAL VARIABLE TO CHECK IF INSTALLED
+#   -----------------------------------------
+
+export MAXXBASHINSTALLED='TRUE'
+
 #   -------------------------------
 #   1.  ENVIRONMENT CONFIGURATION
 #   -------------------------------
