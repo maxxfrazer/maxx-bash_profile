@@ -3,16 +3,14 @@
 SOURCE="${BASH_SOURCE[0]}"
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-echo "DIR is '$DIR'"
-
-if [ ! -f '.bashProf1' ]; then
-    echo "File not found!"
-    touch ~/.bashProf1
+if [ ! -f '.bash_profile' ]; then
+    echo "You don't have a .bash_profile, I'll make one for you now at ~/"
+    touch ~/.bash_profile
 fi
 
 if [ "$MAXXBASHINSTALLED" == "TRUE" ]; then
-	echo 'Already installed!'
+	echo "You've already installed this!"
 else
-	cat $DIR/.bash_profile >> ~/.bashProf1
+	cat $DIR/.bash_profile >> ~/.bash_profile
 	echo 'Your new bash_profile is ready to go'
 fi
