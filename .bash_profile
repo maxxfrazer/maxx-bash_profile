@@ -19,7 +19,7 @@
 
 
 
-# Idea of this from bent's repo
+# Idea of this from bent's repo with different implementation https://github.com/reqshark/gito
 
 alias gito='gitac'
 gitac() {
