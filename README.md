@@ -24,3 +24,13 @@ recommended to install, assuming user already has sublime text:
 OR
 
 [Sublime text 3 OS X Command Line](https://www.sublimetext.com/docs/3/osx_command_line.html)
+
+if copy/pasting the setup `ln -s "/Applications...` then make sure that the last bit of the line
+`... ~/bin/subl` is a bin directory that actually exists. OSX environments don't typically include a `~/bin` in the users home directory so if you don't feel like making one and adding it to your `$PATH`, it's better to remove the squiggly there and go (for ST3):
+
+`ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /bin/subl`
+
+and more likely that would need a sudo:
+``` bash
+$ sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /bin/subl
+```
