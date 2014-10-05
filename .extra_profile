@@ -2,12 +2,13 @@
 
 
 
-export MAXXBASHINSTALLED='TRUE'
 
 
 #   -----------------------------------------
 #   0.  GLOBAL VARIABLE TO CHECK IF INSTALLED
 #   -----------------------------------------
+
+export MAXXBASHINSTALLED='TRUE'
 
 #   -------------------------------
 #   1.  ENVIRONMENT CONFIGURATION
