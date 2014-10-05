@@ -18,9 +18,9 @@ use '$ subl .' to open all files in sublime text
 recommended to install, assuming user already has sublime text:
 
 
-[Sublime text 2](https://www.sublimetext.com/docs/2/osx_command_line.html)
+[Sublime text 2 OS X Command Line](https://www.sublimetext.com/docs/2/osx_command_line.html)
 
 
 OR
 
-[Sublime text 3](https://www.sublimetext.com/docs/3/osx_command_line.html)
+[Sublime text 3 OS X Command Line](https://www.sublimetext.com/docs/3/osx_command_line.html)
