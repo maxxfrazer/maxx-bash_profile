@@ -11,6 +11,8 @@ fi
 if [ "$MAXXBASHINSTALLED" == "TRUE" ]; then
 	echo "You've already installed this!"
 else
-	cat $DIR/.bash_profile >> ~/.bash_profile
+	echo "source .extra_profile" >> ~/.bash_profile
 	echo 'Your new bash_profile is ready to go'
 fi
+
+cp $DIR/.extra_profile  ~/.extra_profile

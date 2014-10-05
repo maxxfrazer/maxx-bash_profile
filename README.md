@@ -3,8 +3,8 @@ maxx-bash_profile
 
 My bash profile (and similar) filled with functions I've made and aliases gathered from various places.
 
-run install.command to append .bash_profile or create if it doesn't exist yet
-.bash_profile can be a complete override if you want, otherwise append at the end of your existing .bash_profile
+run install.command to append .bash_profile with a single line or create if it doesn't exist yet.
+The single line will tell your .bash_profile to include a file called .extra_profile, and this 
 
 .gitconfig contents to be added to the bottom of your existing .gitconfig file
 
