@@ -41,9 +41,10 @@ gitac() {
    git push;
 }
 
-alias subd='subl .'			                    # opens all contents in sublime text
-alias o='open .'				                    # opens all contents in finder
-alias rmf='rm -rf'			                    # shorthand for rm -rf
+alias gits='git status'                     # shorthand for git status
+alias subd='subl .'			                # opens all contents in sublime text
+alias o='open .'				            # opens all contents in finder
+alias rmf='rm -rf'			                # shorthand for rm -rf
 
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
@@ -98,3 +99,24 @@ EOT
 
 zipf () { zip -r "$1".zip "$1" ; }          # zipf:         To create a ZIP archive of a folder
 alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
+
+
+
+#   -----------------------------
+#   2.1  SAFETY NETS
+#   -----------------------------
+
+
+
+# do not delete / or prompt if deleting more than 3 files at a time #
+alias rm='rm -I --preserve-root'
+ 
+# confirmation #
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+ 
+# Parenting changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
