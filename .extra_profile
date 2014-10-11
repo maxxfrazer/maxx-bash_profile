@@ -35,6 +35,12 @@ export MAXXBASHINSTALLED='TRUE'
     shopt -s checkwinsize
 
 
+#   Add colour to terminal
+#   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+#   ------------------------------------------------------------
+  export CLICOLOR=1
+  export LSCOLORS=ExFxBxDxCxegedabagacad
+
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
 #   -----------------------------
@@ -51,6 +57,7 @@ gito() {
 }
 
 alias gits='git status'                     # shorthand for git status
+alias gpull='git pull'                     # shorthand for git pull
 alias subd='subl .'			                # opens all contents in sublime text
 alias o='open .'				            # opens all contents in finder
 alias rmf='rm -rf'			                # shorthand for rm -rf
