@@ -60,7 +60,6 @@ alias gits='git status'                     # shorthand for git status
 alias gpull='git pull'                     # shorthand for git pull
 alias subd='subl .'			                # opens all contents in sublime text
 alias o='open .'				            # opens all contents in finder
-alias rmf='rm -rf'			                # shorthand for rm -rf
 
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
