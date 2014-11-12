@@ -9,6 +9,8 @@
   added = green
   changed = red bold
   untracked = magenta bold
-
+[alias]
+  what = log --graph --abbrev-commit --pretty=oneline
 [color "branch"]
   remote = yellow
+  ui = true
