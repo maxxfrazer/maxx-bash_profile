@@ -10,7 +10,7 @@
   changed = red bold
   untracked = magenta bold
 [alias]
-  what = log --graph --abbrev-commit --pretty=oneline
+  what = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 [color "branch"]
   remote = yellow
   ui = true
