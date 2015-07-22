@@ -14,9 +14,35 @@ export MAXXBASHINSTALLED='TRUE'
 #   1.  ENVIRONMENT CONFIGURATION
 #   -------------------------------
 
+showPWDNeat() {
+  pwd_length=14
+  pwd_symbol="..."
+  newPWD="${PWD/#$HOME/~}"
+  if [ $(echo -n $newPWD | wc -c | tr -d " ") -gt $pwd_length ]
+  then
+     newPWD=$(echo -n $newPWD | awk -F '/' '{
+     print $1 "/" $2 "/.../" $(NF-1) "/" $(NF)}')
+  fi
+  echo $newPWD
+}
+
 #   Change Prompt
 #   ------------------------------------------------------------
-    export PS1="\[\e[1m\]________________________________________________________________________________\n\[\e[1;30;]| \w @ \h (\u) \n| => \[\e[0m\]"
+
+export CURRENTBRANCHIS='nil'
+export LASTDIR='nil'
+parse_git_branch() {
+
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1)/"
+}
+get_git_branch() {
+  CURRENTBRANCHIS=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+}
+update_last_dir() {
+  LASTDIR=`pwd`;
+}
+
+    export PS1="\[\e[1m\]________________________________________________________________________________\n\[\e[1;30;]| \$(showPWDNeat)\$(parse_git_branch)\n| => \[\e[0m\]"
     export PS2="\[\e[1;1m\]| => \[\e[0m\]"
 
 #   Set Paths
@@ -47,14 +73,9 @@ export MAXXBASHINSTALLED='TRUE'
 
 
 
-# Idea of this from bent's repo with different implementation https://github.com/reqshark/gito
 
-gito() {
-   git add -A;
-   git commit -m "$*";
-   git pull;
-   git push;
-}
+
+# Bunch of aliases
 
 alias gits='git status'                     # shorthand for git status
 alias gpull='git pull'                     # shorthand for git pull
@@ -148,3 +169,63 @@ alias qfind="find . -name "                 # qfind:    Quickly search for file
 ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
 ffs () { /usr/bin/find . -name "$@"'*' ; }  # ffs:      Find file whose name starts with a given string
 ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name ends with a given string
+
+
+
+#   ---------------------------
+#   4.  GIT
+#   ---------------------------
+
+git()
+{
+   local repo_name
+
+   if [ "$1" = clone ] ; then # git clone is recursive by default, so will download any and all submodules
+      set -- "clone" "--recursive" "${@:2}"
+      /usr/bin/git "$@"
+   else
+      if [ "$1" = clonecd ] ; then # git clonecd <url> will clone, and then cd into the folder containing the repo
+        local url=$2;
+        repo_name=$(echo $url | awk -F/ '{print $NF}' | sed -e 's/.git$//');
+        git clone --recursive $url $repo_name;
+        cd $repo_name;
+      else
+          /usr/bin/git "$@"
+      fi
+   fi
+}
+
+# Idea of this from bent's repo with different implementation https://github.com/reqshark/gito
+
+gito() {
+  git add -A;
+  git commit -m "$*";
+  get_git_branch;
+  gpull;
+  gpush;
+}
+sgito() {
+  sudo git add -A;
+  sudo git commit -m "$*";
+  get_git_branch;
+  sudo git pull origin "$CURRENTBRANCHIS";
+  sudo git push origin "$CURRENTBRANCHIS";
+}
+
+alias sgita='sudo git add -A'
+
+sgitc() {
+  sudo git commit -m "$*";
+}
+gitc() {
+  git commit -m "$*";
+}
+
+gpull() {
+  git pull origin "$CURRENTBRANCHIS";
+}
+
+gpush() {
+  git push origin "$CURRENTBRANCHIS";
+}
+
