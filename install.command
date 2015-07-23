@@ -15,10 +15,10 @@ if [ ! -f '~/.extra_profile' ]; then
 fi
 
 
-if [ -f '/Applications/Sublime Text.app' ]; then
+if [ -d '/Applications/Sublime Text.app' ]; then
     sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /bin/subl
 else
-	if [ -f '/Applications/Sublime Text 2.app' ]; then
+	if [ -d '/Applications/Sublime Text 2.app' ]; then
 		sudo ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /bin/subl
 	fi
 fi
