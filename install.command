@@ -7,9 +7,11 @@ if [ ! -f '~/.bash_profile' ]; then
     echo "You don't have a .bash_profile, I'll make one for you now at ~/"
     touch ~/.bash_profile
 fi
+
 if [ ! -f '~/.extra_profile' ]; then
     echo "Installing extra_profile now"
 	cp $DIR/.extra_profile  ~/.extra_profile
+	printf "\nsource .extra_profile" >> ~/.bash_profile
 fi
 
 
