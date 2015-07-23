@@ -78,10 +78,10 @@ update_last_dir() {
 # Bunch of aliases
 
 alias gits='git status'                     # shorthand for git status
-alias gpull='git pull'                     # shorthand for git pull
 alias subd='subl .'			                # opens all contents in sublime text
 alias o='open .'				            # opens all contents in finder
 
+alias reload_bash='source ~/.bash_profile'
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
