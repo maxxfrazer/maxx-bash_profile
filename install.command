@@ -2,6 +2,11 @@
 
 SOURCE="${BASH_SOURCE[0]}"
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+CURRENTOSIS=`sw_vers -productVersion`
+version=$(echo $CURRENTOSIS | grep -o '[^-]*$')
+major=$(echo $version | cut -d. -f1)
+minor=$(echo $version | cut -d. -f2)
+micro=$(echo $version | cut -d. -f3)
 
 if [ ! -f '~/.bash_profile' ]; then
     echo "You don't have a .bash_profile, I'll make one for you now at ~/"
@@ -14,12 +19,21 @@ if [ ! -f '~/.extra_profile' ]; then
 	printf "\nsource .extra_profile" >> ~/.bash_profile
 fi
 
-
-if [ -d '/Applications/Sublime Text.app' ]; then
-    sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /bin/subl
+if [ $major -gt 10 ]; then
+	if [ -d '/Applications/Sublime Text.app' ]; then
+	    sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+	else
+		if [ -d '/Applications/Sublime Text 2.app' ]; then
+			sudo ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+		fi
+	fi
 else
-	if [ -d '/Applications/Sublime Text 2.app' ]; then
-		sudo ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /bin/subl
+	if [ -d '/Applications/Sublime Text.app' ]; then
+	    sudo ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /bin/subl
+	else
+		if [ -d '/Applications/Sublime Text 2.app' ]; then
+			sudo ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /bin/subl
+		fi
 	fi
 fi
 
