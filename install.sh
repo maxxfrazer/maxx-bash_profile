@@ -15,10 +15,11 @@ fi
 
 if [ ! -f ~/.extra_profile ]; then
   echo "Installing extra_profile now"
-	printf "\nsource .extra_profile" >> ~/.bash_profile
+	printf "\nsource ~/.extra_profile" >> ~/.bash_profile
 fi
 
 cp $DIR/.extra_profile  ~/.extra_profile
+cp $DIR/.bash_aliases  ~/.bash_aliases
 
 # If ~./inputrc doesn't exist yet, first include the original /etc/inputrc so we don't override it
 if [ ! -a ~/.inputrc ]; then echo "\$include /etc/inputrc" > ~/.inputrc; fi

@@ -10,7 +10,7 @@
 
 export MAXXBASHINSTALLED='TRUE'
 
-source .bash_aliases
+source ~/.bash_aliases
 
 #   -------------------------------
 #   1.  ENVIRONMENT CONFIGURATION
