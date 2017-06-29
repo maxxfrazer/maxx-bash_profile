@@ -132,8 +132,7 @@ ffe () { /usr/bin/find . -name '*'"$@" ; }  # ffe:      Find file whose name end
 
 git()
 {
-   local repo_name
-
+   local repo_name;
    if [ "$1" = clone ] ; then # git clone is recursive by default, so will download any and all submodules
       set -- "clone" "--recursive" "${@:2}"
       /usr/bin/git "$@"
@@ -152,33 +151,35 @@ git()
 # Idea of this from bent's repo with different implementation https://github.com/reqshark/gito
 
 gito() {
-  git add -A;
-  git commit -m "$*";
+  /usr/bin/git add -A;
+  /usr/bin/git commit -m "$*";
   get_git_branch;
-  gpull;
-  gpush;
+  /usr/bin/git pull origin "$CURRENTBRANCHIS";
+  /usr/bin/git push origin "$CURRENTBRANCHIS";
 }
 sgito() {
-  sudo git add -A;
-  sudo git commit -m "$*";
+  sudo /usr/bin/git add -A;
+  sudo /usr/bin/git commit -m "$*";
   get_git_branch;
-  sudo git pull origin "$CURRENTBRANCHIS";
-  sudo git push origin "$CURRENTBRANCHIS";
+  sudo /usr/bin/git pull origin "$CURRENTBRANCHIS";
+  sudo /usr/bin/git push origin "$CURRENTBRANCHIS";
 }
 
-alias sgita='sudo git add -A'
+alias sgita='sudo /usr/bin/git add -A'
 
 sgitc() {
-  sudo git commit -m "$*";
+  sudo /usr/bin/git commit -m "$*";
 }
 gitc() {
-  git commit -m "$*";
+  /usr/bin/git commit -m "$*";
 }
 
 gpull() {
+  get_git_branch;
   git pull origin "$CURRENTBRANCHIS";
 }
 
 gpush() {
+  get_git_branch;
   git push origin "$CURRENTBRANCHIS";
 }
