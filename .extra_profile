@@ -34,8 +34,9 @@ showPWDNeat() {
 export CURRENTBRANCHIS='nil'
 export LASTDIR='nil'
 parse_git_branch() {
-
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1)/"
+  if [ -d .git ]; then
+    git symbolic-ref HEAD | sed -e 's,.*/\(.*\), (\1),'
+  fi;
 }
 get_git_branch() {
   CURRENTBRANCHIS=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
