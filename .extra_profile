@@ -35,11 +35,12 @@ export CURRENTBRANCHIS='nil'
 export LASTDIR='nil'
 parse_git_branch() {
   if [ -d .git ]; then
-    git symbolic-ref HEAD | sed -e 's,.*/\(.*\), (\1),'
+    git symbolic-ref HEAD | sed -e 's,[^/]*/[^/]*/\(.*\), (\1),'
   fi;
 }
+
 get_git_branch() {
-  CURRENTBRANCHIS=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+  CURRENTBRANCHIS=$(git symbolic-ref HEAD | sed -e 's,[^/]*/[^/]*/\(.*\),\1,')
 }
 update_last_dir() {
   LASTDIR=`pwd`;
