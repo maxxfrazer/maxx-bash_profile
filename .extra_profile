@@ -189,3 +189,7 @@ gpush() {
   get_git_branch;
   git push origin "$CURRENTBRANCHIS";
 }
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

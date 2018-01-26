@@ -9,7 +9,7 @@ minor=$(echo $version | cut -d. -f2)
 micro=$(echo $version | cut -d. -f3)
 
 if [ ! -f ~/.bash_profile ]; then
-    echo "You don't have a .bash_profile, I'll make one for you now at ~/"
+    echo "You don't have a .bash_profile, I'll make one for you now"
     touch ~/.bash_profile
 fi
 
@@ -17,6 +17,14 @@ if [ ! -f ~/.extra_profile ]; then
   echo "Installing extra_profile now"
 	printf "\nsource ~/.extra_profile" >> ~/.bash_profile
 fi
+
+which -s brew
+if [[ $? != 0 ]] ; then
+  echo "Installing Homebrew";
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
+fi
+
+brew install git && brew install bash-completion;
 
 cp $DIR/.extra_profile  ~/.extra_profile
 cp $DIR/.bash_aliases  ~/.bash_aliases
